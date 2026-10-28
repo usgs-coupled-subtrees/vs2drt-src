@@ -24,7 +24,7 @@ def test_get_value_copy():
     assert z0 is not z1
     assert_array_almost_equal(z0, z1)
 
-def test_get_value_copy_int_scalar():
+def test_get_value_copy_int_scalar(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
@@ -39,7 +39,7 @@ def test_get_value_copy_int_scalar():
     assert z1 is dest1
     assert_array_equal(z0, z1)
 
-def test_get_value_copy_float_scalar():
+def test_get_value_copy_float_scalar(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
@@ -54,7 +54,7 @@ def test_get_value_copy_float_scalar():
     assert z1 is dest1
     assert_array_almost_equal(z0, z1)
 
-def test_get_value_copy_str():
+def test_get_value_copy_str(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
@@ -68,7 +68,7 @@ def test_get_value_copy_str():
     assert z0 is not z1
     assert_array_equal(z0, z1)
 
-def test_get_value_pointer():
+def test_get_value_pointer(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
@@ -85,7 +85,7 @@ def test_get_value_pointer():
         model.update()
     assert z0 is model.get_value_ptr("Porosity")
 
-def test_get_value_pointer2():
+def test_get_value_pointer2(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
@@ -105,7 +105,7 @@ def test_get_value_pointer2():
     assert_array_almost_equal(z0, z1)
 
 
-def test_get_value_at_indices():
+def test_get_value_at_indices(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
@@ -119,21 +119,21 @@ def test_get_value_at_indices():
 
     assert_array_almost_equal(z0.take((0, 2, 4)), z1)
 
-def test_value_size():
+def test_value_size(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
     z = model.get_value_ptr("Temperature")
     assert model.get_grid_size(0) == z.size
 
-def test_value_nbytes():
+def test_value_nbytes(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
     z = model.get_value_ptr("Temperature")
     assert model.get_var_nbytes("Temperature") == z.nbytes
 
-def test_all_pointable():
+def test_all_pointable(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 

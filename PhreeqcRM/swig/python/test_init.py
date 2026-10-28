@@ -22,7 +22,7 @@ def test_finalize_not_initialized():
     model.finalize()
     assert model._state == State.UNINITIALIZED
 
-def test_initialize_AdvectBMI():
+def test_initialize_AdvectBMI(create_yaml_file):
     model = BMIPhreeqcRM()
 
     assert model._state == State.UNINITIALIZED
