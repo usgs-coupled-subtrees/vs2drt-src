@@ -72,7 +72,7 @@ def test_initialize_from_file():
 
     # assert_array_equal(model.get_grid_shape(0, shape), (7, 5))
 
-def test_update():
+def test_update(create_yaml_file):
     model = BMIPhreeqcRM()
     ## model.initialize() #  @todo
     model.initialize(FilePaths.YAML)

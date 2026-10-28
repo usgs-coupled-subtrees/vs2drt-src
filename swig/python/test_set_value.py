@@ -5,7 +5,7 @@ from phreeqcrm import BMIPhreeqcRM
 
 from constants import FilePaths
 
-def test_set_value():
+def test_set_value(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
@@ -20,7 +20,7 @@ def test_set_value():
     assert new_z is not z1
     assert_array_almost_equal(new_z, z1)
 
-def test_set_value_at_indices():
+def test_set_value_at_indices(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
@@ -29,7 +29,7 @@ def test_set_value_at_indices():
     new_z = model.get_value_ptr("Temperature")
     assert_array_almost_equal(new_z.take((0, 2, 4)), -1.0)
 
-def test_set_value_SelectedOutputOn():
+def test_set_value_SelectedOutputOn(create_yaml_file):
     model = BMIPhreeqcRM()
     model.initialize(FilePaths.YAML)
 
@@ -46,7 +46,7 @@ def test_set_value_SelectedOutputOn():
     assert new_z is not z1
     assert new_z == z1
 
-def test_numpy_integers_compatibility():
+def test_numpy_integers_compatibility(create_yaml_file):
     # if this fails it probably has something
     # to do with the numpy file pyfragments.swg
     # not being integrated into PhreeqcRM.i

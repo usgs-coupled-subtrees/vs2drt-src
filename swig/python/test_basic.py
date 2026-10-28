@@ -10,14 +10,6 @@ from constants import FilePaths
 ERROR_GET_VALUE_PTR_NOT_SUPPORTED = "get_value_ptr not supported for this variable."
 ERROR_SET_VALUE_NOT_SUPPORTED     = "set_value not supported for this variable."
 
-@pytest.fixture
-def create_yaml_file():
-    try:
-        import WriteYamlFile as yrm
-        yrm.WriteYamlFile()
-    except Exception as e:
-        pytest.skip(f"Cannot create yaml file: {e}")
-
 def test_main():
     # for debugging
     print(f"PYTHONPATH={os.getenv('PYTHONPATH')}")
